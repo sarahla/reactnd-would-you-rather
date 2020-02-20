@@ -5,6 +5,7 @@ import Dashboard from '../Dashboard/';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 import { handleInitialUserData } from '../../actions/shared';
+import NavBar from '../../components/NavBar';
 
 class App extends Component {
   componentDidMount() {
@@ -15,12 +16,13 @@ class App extends Component {
       <Router>
         <div className="App container">
           <header className="App-header">
+            <NavBar />
             <h1>Would You Rather...?</h1>
           </header>
           <Route path='/login' component={LoginPage} />
           {
             this.props.authedUser != null ? (
-              <Route path='/user/:id' component={Dashboard} />
+              <Route path='/' exact component={Dashboard} />
               ) : (
               <Redirect to={{ pathname: '/login', state: { from: this.props.location } }} />
             )

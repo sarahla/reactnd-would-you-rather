@@ -24,7 +24,7 @@ function LoginForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(setAuthedUser(user));
-        history.push(`/user/${user}`);
+        history.push(`/`);
     };
     return (
         <div>
