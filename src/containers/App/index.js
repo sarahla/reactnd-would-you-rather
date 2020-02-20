@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { Component} from 'react';
+import { connect } from 'react-redux'
+import LoginPage from '../LoginPage/';
+import { handleInitialUserData } from '../../actions/shared';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-    </div>
-  );
+class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(handleInitialUserData());
+  }
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h1>Would You Rather...?</h1>
+        </header>
+        <LoginPage />
+      </div>
+    )
+  }
 }
 
-export default App;
+export default connect()(App);
