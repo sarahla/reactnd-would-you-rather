@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux'
 import LoginPage from '../LoginPage/';
+import Dashboard from '../Dashboard/';
 import { handleInitialUserData } from '../../actions/shared';
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
         <header className="App-header">
           <h1>Would You Rather...?</h1>
         </header>
+        <Dashboard />
         <LoginPage />
       </div>
     )

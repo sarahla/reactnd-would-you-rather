@@ -25,8 +25,8 @@ function LoginForm() {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <select onChange={handleChange}>
-                    <option defaultValue disabled>Select a User</option>
+                <select defaultValue="null" onChange={handleChange}>
+                    <option value="null" disabled>Select a User</option>
                     {
                         state.userIds.map( userId => {
                             return <option key={userId} value={userId}>{state.users[userId].name}</option>
