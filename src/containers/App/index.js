@@ -2,6 +2,8 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux'
 import LoginPage from '../LoginPage/';
 import Dashboard from '../Dashboard/';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+
 import { handleInitialUserData } from '../../actions/shared';
 
 class App extends Component {
@@ -10,15 +12,30 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App container">
-        <header className="App-header">
-          <h1>Would You Rather...?</h1>
-        </header>
-        <Dashboard />
-        <LoginPage />
-      </div>
+      <Router>
+        <div className="App container">
+          <header className="App-header">
+            <h1>Would You Rather...?</h1>
+          </header>
+          <Route path='/login' component={LoginPage} />
+          {
+            this.props.authedUser != null ? (
+              <Route path='/user/:id' component={Dashboard} />
+              ) : (
+              <Redirect to={{ pathname: '/login', state: { from: this.props.location } }} />
+            )
+          }
+        </div>
+      </Router>
     )
   }
 }
 
-export default connect()(App);
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser,
+    loading: authedUser === null
+  }
+}
+
+export default connect(mapStateToProps)(App)

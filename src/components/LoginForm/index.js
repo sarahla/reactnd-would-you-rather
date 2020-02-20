@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom'
 import { setAuthedUser } from '../../actions/authedUser';
 
 function LoginForm() {
     const [user, setUser] = useState(null);
     const dispatch = useDispatch();
+    let history = useHistory();
+
     const state = useSelector( state => {
         return {
             ...state,
@@ -16,11 +19,12 @@ function LoginForm() {
     const handleChange = (e) => {
         const user = e.target.value;
         setUser(user);
-    }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(setAuthedUser(user));
+        history.push(`/user/${user}`);
     };
     return (
         <div>
