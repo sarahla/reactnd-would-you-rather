@@ -12,10 +12,12 @@ import LeaderBoard from '../Leaderboard';
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleInitialUserData());
-    this.props.dispatch(handleInitialQuestionData());
+	const { dispatch } = this.props;
+    dispatch(handleInitialUserData());
+    dispatch(handleInitialQuestionData());
   }
   render() {
+	const { authedUser, location } = this.props;
     return (
       <Router>
         <div className="App container">
@@ -25,7 +27,7 @@ class App extends Component {
           </header>
           <Route path='/login' component={LoginPage} />
           {
-            this.props.authedUser != null ? (
+            authedUser != null ? (
               <Switch>
                 <Route path='/' exact component={Dashboard} />
                 <Route path='/questions/:id' component={QuestionDetail} />
@@ -33,7 +35,7 @@ class App extends Component {
                 <Route path='/leaderboard' component={LeaderBoard} />
               </Switch>
               ) : (
-              <Redirect to={{ pathname: '/login', state: { from: this.props.location } }} />
+              <Redirect to={{ pathname: '/login', state: { from: location } }} />
             )
           }
         </div>
