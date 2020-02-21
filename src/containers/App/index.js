@@ -8,6 +8,7 @@ import { handleInitialUserData, handleInitialQuestionData } from '../../actions/
 import NavBar from '../../components/NavBar';
 import QuestionDetail from '../QuestionDetail';
 import AddQuestion from '../AddQuestion';
+import LeaderBoard from '../Leaderboard';
 
 class App extends Component {
   componentDidMount() {
@@ -26,9 +27,10 @@ class App extends Component {
           {
             this.props.authedUser != null ? (
               <Switch>
-              <Route path='/' exact component={Dashboard} />
-              <Route path='/questions/:id' component={QuestionDetail} />
-              <Route path='/add' component={AddQuestion} />
+                <Route path='/' exact component={Dashboard} />
+                <Route path='/questions/:id' component={QuestionDetail} />
+                <Route path='/add' component={AddQuestion} />
+                <Route path='/leaderboard' component={LeaderBoard} />
               </Switch>
               ) : (
               <Redirect to={{ pathname: '/login', state: { from: this.props.location } }} />
