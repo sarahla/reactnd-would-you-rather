@@ -12,11 +12,22 @@ export function receiveQuestions(questions) {
 }
 
 function saveQuestion(question) {
+    console.log(question);
     return {
         type: SAVE_QUESTION,
         question
     }
 }
+
+export function handleSaveQuestion(questionInfo) {
+    return (dispatch) => {
+        return _saveQuestion(questionInfo)
+            .then((question) =>
+                dispatch(saveQuestion(question))
+            )
+    }
+}
+
 
 function saveAnswer({qid, authedUser, answer}) {
     return {
@@ -36,8 +47,9 @@ export function handleSaveAnswer(question, answer) {
             answer
         }
 
-        return _saveQuestionAnswer(info).then(
-            dispatch(saveAnswer(info))
-        )
+        return _saveQuestionAnswer(info)
+            .then(
+                dispatch(saveAnswer(info))
+            )
     }
 }
