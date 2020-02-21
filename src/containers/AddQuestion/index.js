@@ -1,13 +1,13 @@
 import React from 'react';
-import QuestionForm from '../../components/QuestionForm/';
+import QuestionForm from '../../components/QuestionForm';
 
-function LoginPage() {
+function AddQuestion() {
     return (
-        <div>
-            <h3>Complete the questions:</h3>
-            <QuestionForm />
-        </div>
-    )
+      <div>
+          <h3>Complete the questions:</h3>
+          <QuestionForm />
+      </div>
+    );
 }
 
-export default LoginPage;
+export default AddQuestion;
