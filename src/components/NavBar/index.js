@@ -12,7 +12,7 @@ function NavBar() {
     return (
         <nav>
             <Link to="/" onClick={handleLogOut}>Home</Link>
-            <Link to="/question">New Question</Link>
+            <Link to="/add">New Question</Link>
             <Link to="/leaderboard">Leader Board</Link>
             { 
                 currentUser && 

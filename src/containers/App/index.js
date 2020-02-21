@@ -4,12 +4,14 @@ import LoginPage from '../LoginPage/';
 import Dashboard from '../Dashboard/';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
-import { handleInitialUserData } from '../../actions/shared';
+import { handleInitialUserData, handleInitialQuestionData } from '../../actions/shared';
 import NavBar from '../../components/NavBar';
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialUserData());
+    this.props.dispatch(handleInitialQuestionData());
+
   }
   render() {
     return (
