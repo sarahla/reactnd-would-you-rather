@@ -1,15 +1,22 @@
 import React from 'react';
-import { 
-    useSelector, 
-    // useDispatch 
-} from 'react-redux';
+import { useSelector } from 'react-redux';
+import QuestionCard from '../../components/QuestionCard/';
 
 function Dashboard() {
-    const currentUser = useSelector(state => state.users[state.authedUser]);
+    const state = useSelector(state => state);
+    const questions = state.questions;
+    const questionsList = Object.keys(questions).sort((a,b) => questions[b].timestamp - questions[a].timestamp);
 
     return (
         <div>
-            { currentUser != null && <h2>Welcome, {currentUser.name}!</h2> }
+            {
+                questionsList.map(question => {
+                    const questionData = questions[question];
+                    return (
+                        <QuestionCard key={questionData.id} question={questionData} />
+                    )
+                })
+            }
         </div>
     )
 }

@@ -2,16 +2,16 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux'
 import LoginPage from '../LoginPage/';
 import Dashboard from '../Dashboard/';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 import { handleInitialUserData, handleInitialQuestionData } from '../../actions/shared';
 import NavBar from '../../components/NavBar';
+import QuestionDetail from '../QuestionDetail';
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialUserData());
     this.props.dispatch(handleInitialQuestionData());
-
   }
   render() {
     return (
@@ -24,7 +24,10 @@ class App extends Component {
           <Route path='/login' component={LoginPage} />
           {
             this.props.authedUser != null ? (
+              <Switch>
               <Route path='/' exact component={Dashboard} />
+              <Route path='/questions/:id' component={QuestionDetail} />
+              </Switch>
               ) : (
               <Redirect to={{ pathname: '/login', state: { from: this.props.location } }} />
             )
