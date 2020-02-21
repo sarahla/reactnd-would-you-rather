@@ -11,14 +11,14 @@ function NavBar() {
     }
     return (
         <nav>
-            <Link to="/" onClick={handleLogOut}>Home</Link>
+            <Link to="/">Home</Link>
             <Link to="/add">New Question</Link>
             <Link to="/leaderboard">Leader Board</Link>
             { 
                 currentUser && 
                 <Fragment>
                     <p>Hello, {currentUser.name}</p>
-                    <Link to="/login">Log Out</Link>
+                    <Link to="/login" onClick={handleLogOut}>Log Out</Link>
                 </Fragment>
             }
         </nav>
