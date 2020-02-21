@@ -5,8 +5,6 @@ import ScoreCard from '../../components/ScoreCard'
 function LeaderBoard() {
     const userIDs = useSelector((state) => Object.keys(state.users));
     const users = useSelector((state) => state.users);
-    // const questions = useSelector(state => state.questions);
-
     const countAnswers = (user) => Object.keys(user.answers).length;
     const countQuestions = (user) => user.questions.length;
     const totalScore = (user) => countAnswers(user) + countQuestions(user);

@@ -1,7 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 function PollResults(props) {
     const { question } = props;
+    const authedUser = useSelector(state=>state.users[state.authedUser]);
     const optionOne = question.optionOne;
     const optionTwo = question.optionTwo;
     const totalVotes = optionOne.votes.length + optionTwo.votes.length;
