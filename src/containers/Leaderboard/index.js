@@ -1,14 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import ScoreCard from '../../components/ScoreCard'
 
 function LeaderBoard() {
     const userIDs = useSelector((state) => Object.keys(state.users));
     const users = useSelector((state) => state.users);
     // const questions = useSelector(state => state.questions);
 
-    const countAnswers = (answers) => Object.keys(answers).length;
-
-    const totalScore = (user) => countAnswers(user.answers) + user.questions.length;
+    const countAnswers = (user) => Object.keys(user.answers).length;
+    const countQuestions = (user) => user.questions.length;
+    const totalScore = (user) => countAnswers(user) + countQuestions(user);
 
     return (
         <div>
@@ -16,10 +17,13 @@ function LeaderBoard() {
                 userIDs
                 .sort((a, b) => totalScore(users[b]) - totalScore(users[a]))
                 .map((userID) => (
-                    <div key={userID}>
-                    <h2>{users[userID].name}</h2>
-                    <p />
-                    </div>
+                    <ScoreCard 
+                        key={userID} 
+                        user={users[userID]}
+                        questions={countQuestions(users[userID])}
+                        answers={countAnswers(users[userID])}
+                        total={totalScore(users[userID])}
+                    />
                 ))
             }
         </div>
