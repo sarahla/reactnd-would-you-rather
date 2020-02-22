@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setAuthedUser } from '../../actions/authedUser';
+import Avatar from '../Avatar';
 
 function NavBar() {
     const dispatch = useDispatch();
@@ -17,6 +18,7 @@ function NavBar() {
             { 
                 currentUser && 
                 <Fragment>
+                    <Avatar user={currentUser} width="30px" />
                     <p>Hello, {currentUser.name}</p>
                     <Link to="/login" onClick={handleLogOut}>Log Out</Link>
                 </Fragment>
