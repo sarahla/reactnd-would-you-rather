@@ -4,7 +4,7 @@ import LoginForm from '../../components/LoginForm/';
 
 function LoginPage(props) {
     const { location } = props;
-    const redirectURL = location.state.from || null;
+    const redirectURL = location.state && location.state.from ? location.state.from : null;
     return (
         <div>
             <h3>Log in to get started!</h3>
