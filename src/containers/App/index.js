@@ -5,10 +5,13 @@ import Dashboard from '../Dashboard/';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 import { handleInitialUserData, handleInitialQuestionData } from '../../actions/shared';
+
+import ProtectedRoute from '../../components/ProtectedRoute';
 import NavBar from '../../components/NavBar';
 import QuestionDetail from '../QuestionDetail';
 import AddQuestion from '../AddQuestion';
 import LeaderBoard from '../Leaderboard';
+import Error404Page from '../Error404Page';
 
 class App extends Component {
   componentDidMount() {
@@ -17,7 +20,6 @@ class App extends Component {
     dispatch(handleInitialQuestionData());
   }
   render() {
-	const { authedUser, location } = this.props;
     return (
       <Router>
         <div className="App container">
@@ -25,19 +27,14 @@ class App extends Component {
             <NavBar />
             <h1>Would You Rather...?</h1>
           </header>
-          <Route path='/login' component={LoginPage} />
-          {
-            authedUser != null ? (
-              <Switch>
-                <Route path='/' exact component={Dashboard} />
-                <Route path='/questions/:id' component={QuestionDetail} />
-                <Route path='/add' component={AddQuestion} />
-                <Route path='/leaderboard' component={LeaderBoard} />
-              </Switch>
-              ) : (
-              <Redirect to={{ pathname: '/login', state: { from: location } }} />
-            )
-          }
+            <Switch>
+              <ProtectedRoute path='/' exact component={Dashboard} />
+              <ProtectedRoute path='/questions/:id' component={QuestionDetail} />
+              <ProtectedRoute path='/add' component={AddQuestion} />
+              <ProtectedRoute path='/leaderboard' component={LeaderBoard} />
+              <Route path='/login' component={LoginPage} />
+              <Route component={Error404Page} />
+            </Switch>
         </div>
       </Router>
     )
@@ -46,7 +43,6 @@ class App extends Component {
 
 function mapStateToProps({ authedUser }) {
   return {
-    authedUser,
     loading: authedUser === null
   }
 }
