@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux'
 import LoginPage from '../LoginPage/';
 import Dashboard from '../Dashboard/';
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { handleInitialUserData, handleInitialQuestionData } from '../../actions/shared';
 

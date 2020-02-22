@@ -10,9 +10,7 @@ function Dashboard() {
     const { answered, unanswered } = questionsList.reduce((acc, qid) => {
         const question = questions[qid];
         const answers = [...question.optionOne.votes, ...question.optionTwo.votes];
-        
         answers.includes(authedUser) ? acc.answered.push(qid) : acc.unanswered.push(qid);
-        
         return acc
     }, { answered: [], unanswered: [] })
 

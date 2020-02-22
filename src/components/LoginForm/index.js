@@ -9,8 +9,6 @@ function LoginForm(props) {
     const { redirectURL } = props;
     let history = useHistory();
 
-    console.log(redirectURL);
-
     const state = useSelector( state => {
         return {
             ...state,
