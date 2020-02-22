@@ -8,11 +8,12 @@ import {
 
 function ProtectedRoute({component: Component, ...rest}) {
     const authedUser = useSelector(state => state.authedUser);
+    const { pathname } = window.location;
     return (
     <Route {...rest} render={(props) => (
         authedUser != null 
         ? <Component {...props} />
-        : <Redirect to={{ pathname: '/login'}} />
+        : <Redirect to={{ pathname: '/login', state: {from: pathname}}} />
     )} />
     )
 }

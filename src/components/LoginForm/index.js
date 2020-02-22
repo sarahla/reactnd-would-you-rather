@@ -3,10 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import { setAuthedUser } from '../../actions/authedUser';
 
-function LoginForm() {
+function LoginForm(props) {
     const [user, setUser] = useState(null);
     const dispatch = useDispatch();
+    const { redirectURL } = props;
     let history = useHistory();
+
+    console.log(redirectURL);
 
     const state = useSelector( state => {
         return {
@@ -24,7 +27,7 @@ function LoginForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(setAuthedUser(user));
-        history.push(`/`);
+        redirectURL ? history.push(redirectURL) : history.push('/');
     };
     return (
         <div>

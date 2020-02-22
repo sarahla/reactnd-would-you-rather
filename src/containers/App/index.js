@@ -29,9 +29,9 @@ class App extends Component {
           </header>
             <Switch>
               <ProtectedRoute path='/' exact component={Dashboard} />
-              <ProtectedRoute path='/questions/:id' component={QuestionDetail} />
-              <ProtectedRoute path='/add' component={AddQuestion} />
-              <ProtectedRoute path='/leaderboard' component={LeaderBoard} />
+              <ProtectedRoute path='/questions/:id' exact component={QuestionDetail} />
+              <ProtectedRoute path='/add' exact component={AddQuestion} />
+              <ProtectedRoute path='/leaderboard' exact component={LeaderBoard} />
               <Route path='/login' component={LoginPage} />
               <Route component={Error404Page} />
             </Switch>
