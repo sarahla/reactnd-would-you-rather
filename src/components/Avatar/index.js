@@ -1,10 +1,10 @@
 import React from 'react';
 
 function Avatar(props) {
-    const {user, width} = props;
+    const {user, width, className} = props;
     const src = require(`../../images/${user.avatarURL}`);
     return (
-        <img src={src} alt={user.name} width={width} />
+        <img className={className} src={src} alt={user.name} width={width} />
     )
 }
 

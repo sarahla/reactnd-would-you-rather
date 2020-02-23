@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import { setAuthedUser } from '../../actions/authedUser';
+import Button from '../Button';
+import SelectField from '../SelectField';
+import styled from 'styled-components';
+import { Flex, Box } from 'reflexbox';
 
 function LoginForm(props) {
     const [user, setUser] = useState(null);
@@ -28,22 +32,26 @@ function LoginForm(props) {
         redirectURL ? history.push(redirectURL) : history.push('/');
     };
     return (
-        <div>
+        <Fragment>
             <form onSubmit={handleSubmit}>
-                <select defaultValue="null" onChange={handleChange}>
-                    <option value="null" disabled>Select a User</option>
-                    {
-                        state.userIds.map( userId => {
-                            return <option key={userId} value={userId}>{state.users[userId].name}</option>
-                        })
-                    }
-                </select>
-                <button
-                    type="submit">
-                    Submit
-                </button>
+                <Flex flexDirection="column">
+                    <Box mb={3}>
+                        <SelectField defaultValue="null" onChange={handleChange}>
+                            <option value="null" disabled>Select a User</option>
+                            {
+                                state.userIds.map( userId => {
+                                    return <option key={userId} value={userId}>{state.users[userId].name}</option>
+                                })
+                            }
+                        </SelectField>
+                    </Box>
+                    <Button
+                        type="submit">
+                        Sign In
+                    </Button>
+                </Flex>
             </form>
-        </div>
+        </Fragment>
     )   
 }
 

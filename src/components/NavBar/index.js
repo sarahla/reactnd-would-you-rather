@@ -9,6 +9,7 @@ import Avatar from '../Avatar';
 const StyledLink = styled(NavLink)`
     color: #888888;
     text-decoration: none;
+    transition: color 300ms ease-out;
     
     &:not(:first-child) {
         margin-left: 1rem;
@@ -17,6 +18,10 @@ const StyledLink = styled(NavLink)`
     &.active {
         font-weight: bold;
         color: #EE4266;
+    }
+
+    &:hover {
+        color: #540D6E;
     }
 `;
 
@@ -32,8 +37,16 @@ const LinkWrapper = styled(Flex)`
     align-items: center;
 `;
 
+const StyledAvatar = styled(Avatar)`
+    margin-right: 1rem;
+`;
+
 const Greeting = styled.p`
-    margin-left: 1rem;
+    margin: 0;
+`;
+
+const LogOutLink = styled(StyledLink)`
+    font-size: 0.75rem;
 `;
 
 function NavBar() {
@@ -44,19 +57,21 @@ function NavBar() {
     }
     return (
         <StyledNav>
+            <h1>WYR...?</h1>
+            { 
+                currentUser && 
+                <LinkWrapper>
+                    <StyledAvatar user={currentUser} width="30px" />
+                    <Greeting>Hello, {currentUser.name}</Greeting>
+                    <LogOutLink to="/login" onClick={handleLogOut}>Log Out</LogOutLink>
+                </LinkWrapper>
+            }
             <LinkWrapper>
                 <StyledLink exact to="/">Home</StyledLink>
                 <StyledLink to="/add">New Question</StyledLink>
                 <StyledLink to="/leaderboard">Leader Board</StyledLink>
             </LinkWrapper>
-            { 
-                currentUser && 
-                <LinkWrapper>
-                    <Avatar user={currentUser} width="30px" />
-                    <Greeting>Hello, {currentUser.name}</Greeting>
-                    <StyledLink to="/login" onClick={handleLogOut}>Log Out</StyledLink>
-                </LinkWrapper>
-            }
+            
         </StyledNav>
     )
 }

@@ -25,7 +25,6 @@ class App extends Component {
         <div className="App container">
           <header className="App-header">
             <NavBar />
-            <h1>Would You Rather...?</h1>
           </header>
             <Switch>
               <ProtectedRoute path='/' exact component={Dashboard} />
