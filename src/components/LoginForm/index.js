@@ -4,14 +4,20 @@ import { useHistory } from 'react-router-dom'
 import { setAuthedUser } from '../../actions/authedUser';
 import Button from '../Button';
 import SelectField from '../SelectField';
-import styled from 'styled-components';
 import { Flex, Box } from 'reflexbox';
 
 function LoginForm(props) {
+    const { redirectURL } = props;
     const [user, setUser] = useState(null);
     const dispatch = useDispatch();
-    const { redirectURL } = props;
     let history = useHistory();
+    
+    // If user exists in local storage, immediately redirect
+    const localStorageUser = localStorage.getItem('authedUser');
+    if ( localStorageUser !== ( null || 'null') ) {
+        dispatch(setAuthedUser(user));
+        redirectURL ? history.push(redirectURL) : history.push('/');
+    }
 
     const state = useSelector( state => {
         return {
