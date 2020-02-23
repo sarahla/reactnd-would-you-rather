@@ -15,7 +15,7 @@ function LoginForm(props) {
     // If user exists in local storage, immediately redirect
     const localStorageUser = localStorage.getItem('authedUser');
     if ( localStorageUser !== ( null || 'null') ) {
-        dispatch(setAuthedUser(user));
+        dispatch(setAuthedUser(localStorageUser));
         redirectURL ? history.push(redirectURL) : history.push('/');
     }
 
