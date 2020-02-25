@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
+    font-family: inherit;
     background-color: #EE4266;
     font-weight: 900;
     color: #ffffff;
