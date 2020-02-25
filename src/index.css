@@ -7,6 +7,10 @@ body {
   color: #111111;
 }
 
+p {
+  margin-top: 0;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;

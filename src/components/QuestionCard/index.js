@@ -77,8 +77,8 @@ function QuestionCard(props) {
                 <SpeechBubble to={`/questions/${question.id}`}>
                     <Flex p={3} width="100%">
                         <Box flexGrow="1">
-                            <h4>Would you rather...</h4>
-                            <p>{question.optionOne.text} or ... ?</p>
+                            <p>Would you rather</p>
+                            <p><strong>{question.optionOne.text} or... ?</strong></p>
                         </Box>
                         <Box alignSelf="center">
                             <Link to={`/questions/${question.id}`}>
