@@ -40,7 +40,7 @@ function PollResults(props) {
     const totalVotes = optionOne.votes.length + optionTwo.votes.length;
 
     const votePercentage = option => {
-        return option.votes.length / totalVotes * 100;
+        return (option.votes.length / totalVotes * 100).toFixed(0);
     }
 
     return (
