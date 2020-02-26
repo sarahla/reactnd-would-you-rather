@@ -81,9 +81,7 @@ function QuestionCard(props) {
                             <p><strong>{question.optionOne.text} or... ?</strong></p>
                         </Box>
                         <Box alignSelf="center">
-                            <Link to={`/questions/${question.id}`}>
-                                View Poll
-                            </Link>
+                            View Poll
                         </Box>
                     </Flex>
                 </SpeechBubble>

@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import QuestionCard from '../../components/QuestionCard/';
 import { Flex, Box } from 'reflexbox/styled-components';
+import Tabs from '../../components/Tabs';
 
 function Dashboard() {
     const questions = useSelector(state => state.questions);
@@ -16,28 +17,28 @@ function Dashboard() {
     }, { answered: [], unanswered: [] })
 
     return (
-        <Flex margin="auto" justifyContent="space-around" mx={-4}>
-            <Box width={1/2} px={4}>
-                <h2>Unanswered Questions</h2>
-                {
-                    unanswered.map(qid => {
-                        return (
-                            <QuestionCard key={qid} question={questions[qid]} />
-                        )
-                    })
-                }
-            </Box>
-            <Box width={1/2} px={4}>
-                <h2>Answered Questions</h2>
-                {
-                    answered.map(qid => {
-                        return (
-                            <QuestionCard key={qid} question={questions[qid]} />
-                        )
-                    })
-                }
-            </Box>
-        </Flex>
+        <Box maxWidth="700px" margin="auto">
+            <Tabs>
+                <Box label="Unanswered Questions" id="unanswered" width={1/2} px={4}>
+                    {
+                        unanswered.map(qid => {
+                            return (
+                                <QuestionCard key={qid} question={questions[qid]} />
+                            )
+                        })
+                    }
+                </Box>
+                <Box label="Answered Questions" id="answered" width={1/2} px={4}>
+                    {
+                        answered.map(qid => {
+                            return (
+                                <QuestionCard key={qid} question={questions[qid]} />
+                            )
+                        })
+                    }
+                </Box>
+            </Tabs>
+        </Box>
     )
 }
 
