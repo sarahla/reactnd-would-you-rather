@@ -20,7 +20,7 @@ function Tabs(props) {
     const [activeTab, setActiveTab] = useState(children[0].props.id);
 
     return (
-        <Flex flexDirection="column" my={5}>
+        <Flex flexDirection="column">
             <TabList>
                {children.map(tab => {
                     const { label, id } = tab.props;

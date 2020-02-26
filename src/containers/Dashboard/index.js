@@ -18,6 +18,7 @@ function Dashboard() {
 
     return (
         <Box maxWidth="700px" margin="auto">
+            <h1>Dashboard</h1>
             <Tabs>
                 <Box label="Unanswered Questions" id="unanswered" width={1/2} px={4}>
                     {
