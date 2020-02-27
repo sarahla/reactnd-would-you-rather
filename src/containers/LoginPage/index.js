@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import LoginForm from '../../components/LoginForm/';
-import { Flex, Box } from 'reflexbox';
+import { Flex } from 'reflexbox';
 
 function LoginPage(props) {
     const { location } = props;

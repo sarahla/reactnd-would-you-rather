@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { setAuthedUser } from '../../actions/authedUser';
 import  styled from 'styled-components';
-import { Flex, Box } from 'reflexbox/styled-components';
+import { Flex } from 'reflexbox/styled-components';
 import Avatar from '../Avatar';
 
 const StyledLink = styled(NavLink)`

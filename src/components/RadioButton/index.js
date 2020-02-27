@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import { Flex, Box } from 'reflexbox/styled-components';
 import styled from 'styled-components';
 
 const StyledInput = styled.input`

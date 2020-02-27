@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import QuestionCard from '../../components/QuestionCard/';
-import { Flex, Box } from 'reflexbox/styled-components';
+import { Box } from 'reflexbox/styled-components';
 import Tabs from '../../components/Tabs';
 
 function Dashboard() {

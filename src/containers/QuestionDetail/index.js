@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import PollForm from '../../components/Poll/PollForm';
 import PollResults from '../../components/Poll/PollResults';
 import { Flex, Box } from 'reflexbox/styled-components';
-import styled from 'styled-components';
 import Avatar from '../../components/Avatar';
 
 function QuestionDetail(props) {

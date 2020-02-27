@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import {Flex, Box} from 'reflexbox/styled-components';
+import React from 'react';
 import styled from 'styled-components';
 
 const StyledListItem = styled.li`
@@ -15,8 +14,6 @@ const StyledListItem = styled.li`
 
 function Tab(props) {
     const { label, onClick, activeTab } = props;
-    console.log(activeTab);
-
     return (
         <StyledListItem onClick={onClick} className={activeTab ? 'activeTab' : null}>
             { label } 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box } from 'reflexbox/styled-components';
+import { Flex } from 'reflexbox/styled-components';
 import QuestionForm from '../../components/QuestionForm';
 
 function AddQuestion() {
