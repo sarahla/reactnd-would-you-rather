@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Flex, Box } from 'reflexbox/styled-components';
 import styled from 'styled-components';
 import Divider from '../../components/Divider';
+import Avatar from '../../components/Avatar';
 
 const StyledH2 = styled.h2`
     margin: 0 0 1rem 0;
@@ -11,6 +12,7 @@ const StyledH2 = styled.h2`
 const StyledP = styled.p`
     font-weight: bold;
     margin-bottom: 0.5rem;
+    padding-right: 1.5rem;
 `;
 
 const VoteCount = styled.p`
@@ -32,12 +34,29 @@ const PercentageBar = styled.div`
     }
 `;
 
+const UserBadge = styled.div`
+    background-color: #f9f097;
+    padding: 0.5rem;
+    line-height: 0;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+    right: -1rem;
+    top: 2rem;
+`;
+
+const Answer = styled(Box)`
+    position: relative;
+`;
+
 function PollResults(props) {
     const { question } = props;
     const authedUser = useSelector(state=>state.users[state.authedUser]);
     const optionOne = question.optionOne;
     const optionTwo = question.optionTwo;
     const totalVotes = optionOne.votes.length + optionTwo.votes.length;
+    const userAnswer = optionOne.votes.includes(authedUser.id) ? 'optionOne' : 'optionTwo';
 
     const votePercentage = option => {
         return (option.votes.length / totalVotes * 100).toFixed(0);
@@ -46,23 +65,35 @@ function PollResults(props) {
     return (
         <Flex flexDirection="column">
             <StyledH2>Results:</StyledH2>
-            <Box py={3}>
+            <Answer py={3}>
+                {
+                    userAnswer === 'optionOne' && 
+                        <UserBadge>
+                            <Avatar user={authedUser} width="20px" />
+                        </UserBadge> 
+                }
                 <StyledP>Would you rather {optionOne.text}?</StyledP>
                 <PercentageBar val={votePercentage(optionOne)}>
                     {votePercentage(optionOne)}%
                 </PercentageBar>
                 <VoteCount>{optionOne.votes.length} of {totalVotes} votes</VoteCount>
-            </Box>
+            </Answer>
             <Divider my={3} alignItems="center">
                 OR
             </Divider>
-            <Box py={3}>
+            <Answer py={3}>
+                {
+                    userAnswer === 'optionTwo' && 
+                        <UserBadge>
+                            <Avatar user={authedUser} width="20px" />
+                        </UserBadge> 
+                }
                 <StyledP>Would you rather {optionTwo.text}?</StyledP>
                 <PercentageBar val={votePercentage(optionTwo)}>
                     {votePercentage(optionTwo)}%
                 </PercentageBar>
                 <VoteCount>{optionTwo.votes.length} of {totalVotes} votes</VoteCount>
-            </Box>
+            </Answer>
         </Flex>
     )
 }

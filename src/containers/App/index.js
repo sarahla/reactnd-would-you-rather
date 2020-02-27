@@ -26,7 +26,7 @@ class App extends Component {
           <header className="App-header">
             <NavBar />
           </header>
-           <Switch>
+            <Switch>
               <ProtectedRoute path='/' exact component={Dashboard} />
               <ProtectedRoute path='/questions/:id' exact component={QuestionDetail} />
               <ProtectedRoute path='/add' exact component={AddQuestion} />
