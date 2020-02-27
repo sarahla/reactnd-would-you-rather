@@ -12,7 +12,6 @@ export function receiveQuestions(questions) {
 }
 
 function saveQuestion(question) {
-    console.log(question);
     return {
         type: SAVE_QUESTION,
         question
