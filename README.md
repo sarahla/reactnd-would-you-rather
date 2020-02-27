@@ -1,6 +1,7 @@
-# reactnd-would-you-rather
-A "Would You Rather...?" game created with React and Redux.
+# React Would You Rather...?
+A "Would You Rather...?" game created with React and Redux. The purpose of this project is to practice using React with Redux to manage the state of the application.
 
-## To build the project, run the following commands in the terminal
-    `npm install`
-    `npm start`
+## To Run Locally
+
+* install all project dependencies with `npm install`
+* start the development server with `npm start`
