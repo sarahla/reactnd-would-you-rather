@@ -7,9 +7,9 @@ import { Flex, Box } from 'reflexbox/styled-components';
 import Avatar from '../Avatar';
 
 const StyledLink = styled(NavLink)`
-    color: #888888;
+    color: #000;
     text-decoration: none;
-    transition: color 300ms ease-out;
+    transition: border 100ms ease-out;
     
     &:not(:first-child) {
         margin-left: 1rem;
@@ -17,11 +17,11 @@ const StyledLink = styled(NavLink)`
 
     &.active {
         font-weight: bold;
-        color: #EE4266;
+        color: #fd5f7e;
     }
 
     &:hover {
-        color: #540D6E;
+        border-bottom: 2px solid #000;
     }
 `;
 
@@ -30,7 +30,7 @@ const StyledNav = styled.nav`
     justify-content: space-between;
     align-content: center;
     min-height: 60px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 2px solid #000;
 `;
 
 const LinkWrapper = styled(Flex)`

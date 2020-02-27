@@ -48,7 +48,7 @@ const SpeechBubble = styled(Link)`
         bottom: 20px;
     }
     &:hover {
-        background-color: #ffa2e7;
+        background-color: #76e6d5;
     }
     p, h4 {
         margin: 0;

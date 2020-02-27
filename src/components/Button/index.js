@@ -3,19 +3,19 @@ import styled from 'styled-components';
 
 const StyledButton = styled.button`
     font-family: inherit;
-    background-color: #EE4266;
+    background-color: #fd5f7e;
     font-weight: 900;
     color: #ffffff;
     font-size: 1rem;
     border: none;
-    padding: 0.75rem;
+    padding: 0.75rem 1.5rem;
     text-transform: uppercase;
     border-radius: 0.5rem;
     transition: all 300ms ease-in-out;
     cursor: pointer;
 
     &:hover {
-        background-color: #540D6E;
+        background-color: #76e6d5;
     }
 `;
 
