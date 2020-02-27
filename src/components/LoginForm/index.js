@@ -12,12 +12,15 @@ function LoginForm(props) {
     const dispatch = useDispatch();
     let history = useHistory();
     
-    // If user exists in local storage, immediately redirect
-    const localStorageUser = localStorage.getItem('authedUser');
-    if ( localStorageUser !== ( null || 'null') ) {
-        dispatch(setAuthedUser(localStorageUser));
-        redirectURL ? history.push(redirectURL) : history.push('/');
-    }
+    /* 
+     * If user exists in local storage, immediately redirect
+     * Commenting this functionality out to satisfy #5 of Login Flow in rubric
+     */
+    // const localStorageUser = localStorage.getItem('authedUser');
+    // if ( localStorageUser !== ( null || 'null') ) {
+    //     dispatch(setAuthedUser(localStorageUser));
+    //     redirectURL ? history.push(redirectURL) : history.push('/');
+    // }
 
     const state = useSelector( state => {
         return {
